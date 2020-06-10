@@ -60,3 +60,7 @@ html {
 .simon-button.light-up {
   filter: brightness(120%);
 }
+
+.first-display{
+  text-align: center;
+}
