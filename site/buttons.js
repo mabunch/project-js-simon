@@ -79,6 +79,7 @@ function onceUserClicked(colorClicked) {
   if (colorClicked != correctColor){
     // game over! user clicked the wrong color!
     gameInProgress = false; 
+    sequence = [];
     $('.end-game').removeClass('hide');
   }
 
@@ -141,3 +142,13 @@ $('.simon-button.start').on('click', function() {
   console.log("START");
   beginRound(); // call beginRound!
 });
+
+//Change start button color when pressed
+$('.simon-button.start').on('mousedown', function() {
+$('.simon-button.start').addClass('go');
+});
+
+$('.simon-button.start').on('mouseup', function() {
+$('.simon-button.start').removeClass ('go')
+});
+  
