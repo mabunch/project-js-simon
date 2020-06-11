@@ -106,9 +106,26 @@ function simulation(){
 $('.simon-button.start').on('click', function() {
   gameInProgress = true;    
   $('.end-game').addClass('hide');
-  $('.counter').text(0);
+  $('.counter').text(0); 
+  
+
+  $('.simon-button.blue').on('mousedown', function() {
+    $('.simon-button.blue').addClass('light-up');
+    var audio = new Audio("isaac.m4a");
+    audio.play();
+    console.log("BLUE");
+  });
 
   console.log("START");
   setTimeout(() => { simulation(); }, 500);
+});
+
+//Change start button color when pressed
+$('.simon-button.start').on('mousedown', function() {
+$('.simon-button.start').addClass('go');
+});
+
+$('.simon-button.start').on('mouseup', function() {
+$('.simon-button.start').removeClass ('go')
 });
   
