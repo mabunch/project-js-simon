@@ -1,10 +1,11 @@
 // global variables declared here
-let colors = ["GREEN", "RED", "YELLOW", "BLUE"]; // only four colors to choose from
+let colors = ["GREEN","RED","YELLOW","BLUE"]; // only four colors to choose from
 let correctColor;
 let gameInProgress = false;
 let text = $('.counter').text();
 let index = 0;
 let sequence = [];
+
 
 // Green
   $('.simon-button.green').on('mouseup', function() {
@@ -66,6 +67,7 @@ let sequence = [];
     console.log("BLUE");
   });
 
+/* increases the score for each round */
 function increaseCount() {
     let text = $('.counter').text()
     console.log(text)
@@ -82,13 +84,11 @@ function onceUserClicked(colorClicked) {
     sequence = [];
     $('.end-game').removeClass('hide');
   }
-
   else if (colorClicked == correctColor && index == (sequence.length-1)){
     // successfully passed current level. 
     increaseCount();
     beginRound();
   }
-
   else {
     // clicked the right button in sequence, go to next color in sequence.
     index++;
@@ -102,6 +102,29 @@ function addColor() {
   sequence.push(colors[colorIndex]);
 }
 
+
+/* function to light up a simon button by computer */
+function lightUp(button) {
+
+    if (button == "RED"){
+      $('.simon-button.red').addClass('light-up');
+      setTimeout(() => { $('.simon-button.red').removeClass('light-up'); }, 500);
+    }
+    else if (button == "GREEN"){
+      $('.simon-button.green').addClass('light-up');
+      setTimeout(() => { $('.simon-button.green').removeClass('light-up'); }, 500);
+    }
+    else if (button == "BLUE"){
+      $('.simon-button.blue').addClass('light-up');
+      setTimeout(() => { $('.simon-button.blue').removeClass('light-up'); }, 500);
+    }
+    else{
+      $('.simon-button.yellow').addClass('light-up');
+      setTimeout(() => { $('.simon-button.yellow').removeClass('light-up'); }, 500);
+    }
+    return;
+}
+
 /* function to begin a new round, or level of the current game */
 function beginRound() {
   index = 0;
@@ -112,7 +135,19 @@ function beginRound() {
   $('.sequence').removeClass('hide');
   setTimeout(() => { $('.sequence').addClass('hide'); }, 2500);
   console.log(sequence); // record sequence in console.
-  
+
+  // light up buttons in order.
+  var numLights = sequence.length;
+  console.log(numLights);
+  console.log(sequence[0]);
+
+  // lightTheButtons();
+  for (i=0; i < sequence.length; i++) {
+    click = sequence[i];
+    // console.log("made it here");
+    setTimeout(() => { lightUp(click); }, 1000);
+  }
+
   simulation();
 }
 
