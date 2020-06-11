@@ -1,11 +1,12 @@
-// variables declared here
+// global variables declared here
 let colors = ["GREEN", "RED", "YELLOW", "BLUE"]; // only four colors to choose from
 let correctColor;
 let gameInProgress = false;
 let text = $('.counter').text();
-// let sequencePrint = $('.sequence').text();
+let index = 0;
+let sequence = [];
 
-//Green
+// Green
   $('.simon-button.green').on('mouseup', function() {
     $('.simon-button.green').removeClass('light-up');
     if (gameInProgress){
@@ -20,7 +21,7 @@ let text = $('.counter').text();
     console.log("GREEN");
   });
 
-  //Red
+  // Red
   $('.simon-button.red').on('mouseup', function() {
     $('.simon-button.red').removeClass('light-up')
     if (gameInProgress){
@@ -35,7 +36,7 @@ let text = $('.counter').text();
     console.log("RED");
   });
 
-  //Yellow
+  // Yellow
   $('.simon-button.yellow').on('mouseup', function() {
     $('.simon-button.yellow').removeClass('light-up');
     if (gameInProgress) {
@@ -50,7 +51,7 @@ let text = $('.counter').text();
     console.log("YELLOW");
   });
 
-  //Blue
+  // Blue
   $('.simon-button.blue').on('mouseup', function() {
     $('.simon-button.blue').removeClass('light-up');
     if (gameInProgress){
@@ -76,39 +77,67 @@ function increaseCount() {
 /* function used to determine if user has clicked the correct color */
 function onceUserClicked(colorClicked) {
   if (colorClicked != correctColor){
-    gameInProgress = false; // game is over!
-    $('.end-game').removeClass('hide'); // show game over message. 
+    // game over! user clicked the wrong color!
+    gameInProgress = false; 
+    $('.end-game').removeClass('hide');
   }
-  else {
-    // they clicked the right button, so increase score and give next color.
+
+  else if (colorClicked == correctColor && index == (sequence.length-1)){
+    // successfully passed current level. 
     increaseCount();
+    beginRound();
+  }
+
+  else {
+    // clicked the right button in sequence, go to next color in sequence.
+    index++;
     setTimeout(() => { simulation(); }, 500);
   }
 }
 
-// Function Called Repeatedly to Run Game
-function simulation(){
-
-  // generate one random color for the user to click.
-  colorIndex = Math.floor( (Math.random() * colors.length)); // picks an index, 0-3
-  correctColor = colors[colorIndex]; // correct color to click becomes the color at that index.
-  
-  sequence = correctColor; // will eventually change to be an actual sequence
-  // console.log("SEQUENCE: " + sequence); // right now, sequence is a single color. 
-  $('.sequence').text(sequence);
-  console.log(sequence);
-
-  $('.sequence').removeClass('hide');
-  setTimeout(() => { $('.sequence').addClass('hide'); }, 1000);
+/* function used to add another color to current sequence */
+function addColor() {
+  colorIndex = Math.floor( (Math.random() * colors.length));
+  sequence.push(colors[colorIndex]);
 }
 
-  // Begin Game Here
+/* function to begin a new round, or level of the current game */
+function beginRound() {
+  index = 0;
+  addColor();
+
+  // flash sequence on screen
+  $('.sequence').text(sequence);
+  $('.sequence').removeClass('hide');
+  setTimeout(() => { $('.sequence').addClass('hide'); }, 2500);
+  console.log(sequence); // record sequence in console.
+  
+  simulation();
+}
+
+/* updates the correct color the user should be pressing in sequence */
+function simulation(){
+
+  correctColor = sequence[index]; // identify which color shoudl be clicked this iteration.
+  console.log("Correct Color: " + correctColor);
+
+  // OLD CODE: 
+  // generate one random color for the user to click.
+  // colorIndex = Math.floor( (Math.random() * colors.length)); // picks an index, 0-3
+  // correctColor = colors[colorIndex]; // correct color to click becomes the color at that index.
+  // sequence = correctColor; // will eventually change to be an actual sequence
+  // console.log("SEQUENCE: " + sequence); // right now, sequence is a single color. 
+  // $('.sequence').text(sequence);
+  // console.log(sequence);
+  // $('.sequence').removeClass('hide');
+  // setTimeout(() => { $('.sequence').addClass('hide'); }, 2000);
+}
+
+// GAME BEGINS - start button has been clicked!
 $('.simon-button.start').on('click', function() {
   gameInProgress = true;    
   $('.end-game').addClass('hide');
   $('.counter').text(0);
-
   console.log("START");
-  setTimeout(() => { simulation(); }, 500);
+  beginRound(); // call beginRound!
 });
-  
