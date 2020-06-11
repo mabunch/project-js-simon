@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 //Green
   $('.simon-button.green').on('mouseup', function() {
@@ -76,3 +77,13 @@
     audio.play();
   });  
   
+=======
+/* $ is part of j.query library. Give all elements that match
+the given CSS selector. When you click it, run following. 
+Listening for events tied to certain parts of the page */
+
+
+
+
+
+>>>>>>> 3c3af37f4070efb25e6a908fd1b23310f34c6586
