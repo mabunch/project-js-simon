@@ -12,6 +12,9 @@ html {
   width: 800px;
   margin: 0 auto;
 }
+.counter {
+  color: black;
+}
 
 #content h1 {
   font-size: 3rem;
@@ -32,7 +35,7 @@ html {
 
 .simon-container .simon-button {
   align-items: center;
-  background-color: #333;
+  ;
   border-radius: 10px;
   color: #fff;
   padding: 20px;
@@ -42,17 +45,29 @@ html {
 }
 
 .simon-button.green {
-  background-color: #21BA45;
+  background-image: url(greenbutton.png)
 }
 
 .simon-button.red {
-  background-color: #DB2828;
+  background-image: url(redbutton.png)
 }
 
 .simon-button.yellow {
-  background-color: #FBBD08;
+  background-image: url(yellowbutton.png)
 }
 
 .simon-button.blue {
-  background-color: #2185D0;
+  background-image: url(bluebutton.png)
+}
+.light-up.green {
+  background-image: url(greenbutton-lightup.png)
+}
+.light-up.red {
+  background-image: url(redbutton-lightup.png)
+}
+.light-up.yellow {
+  background-image: url(yellowbutton-lightup.png)
+}
+.light-up.blue {
+  background-image: url(bluebutton-lightup.png)
 }
