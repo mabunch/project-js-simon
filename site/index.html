@@ -13,21 +13,29 @@
     <audio id="yellow-sound"><source src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
     <audio id="blue-sound"><source src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
     <audio id="red-sound"><source src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
-  
-    </head>
+  </head>
+
   <body>
     <section id="content">
       <h1>Simon (Adjacent Version)</h1>
-        <h2 class= "counter"> 0</h2>
-        <p class= call> red</p>
 
-
+      <!-- start button -->
+      <div class="start-container">
+        <div class="simon-button start">
+          <p> Start Game </p>
+        </div>
+      </div> 
+      <!-- simon buttons -->
       <div class="simon-container">
         <div class="simon-button green"></div>
         <div class="simon-button red"></div>
         <div class="simon-button yellow"></div>
         <div class="simon-button blue"></div>
       </div>
+        <!-- level counter and sequence to match -->
+        <h2 class= "counter">0</h2>
+        <h2 class="sequence hide"></h2>
+        <h2 class="end-game hide">GAME OVER</h2>
     </section>
 
     <script
