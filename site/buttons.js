@@ -131,9 +131,9 @@ function beginRound() {
   addColor();
 
   // flash sequence on screen
-  $('.sequence').text(sequence);
-  $('.sequence').removeClass('hide');
-  setTimeout(() => { $('.sequence').addClass('hide'); }, 2500);
+  //$('.sequence').text(sequence);
+ // $('.sequence').removeClass('hide');
+ // setTimeout(() => { $('.sequence').addClass('hide'); }, 2500);
   console.log(sequence); // record sequence in console.
 
   // light up buttons in order.

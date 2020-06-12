@@ -18,39 +18,64 @@
    <link href="https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap" rel="stylesheet">
 
   </head>
+  <div class="wrapper">
 
-  <body>
-    <section id="content">
-      <h1>Simon says Code</h1>
+    <body>
+      <!--title section-->
+      <div class="box a">
+        <section id="content">
+        <h1 >Simon says Code</h1>
+     </div>      
 
-      <!-- start button -->
-      <div class="start-container">
-        <div class="simon-button start">
-          <p> Start Game </p>
-        </div>
-      </div> 
       <!-- simon buttons -->
-      <div class="simon-container">
-        <div class="simon-button green"></div>
-        <div class="simon-button red"></div>
-        <div class="simon-button yellow"></div>
-        <div class="simon-button blue"></div>
+      <div class="box b">
+        <div class="simon-container">
+          <div class="simon-button green"></div>
+          <div class="simon-button red"></div>
+          <div class="simon-button yellow"></div>
+          <div class="simon-button blue"></div>
+        </div>  
       </div>
-        <!-- level counter and sequence to match -->
 
-      <h2 class="counter">0</h2>
+      <!-- level counter and sequence to match -->
+      <div class='box c'>
+        <div class="start-container">
+          <div class="simon-button start">
+            <p> Start Game </p>
+          </div>
+        </div>
+        <h2 class:>Level:</h2>
+        <h2 class="counter"> 0</h2>
       
         <h2 class="sequence hide"></h2>
         <h2 class="end-game hide">GAME OVER</h2>
-    </section>
+        </section>
+      </div>
 
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous">
-    </script>
+     <!--instructions-->
+      <div class="box d">
+        <p class= "instructions">
+         How to play: 
+           <ol class="instructions">1. Click Start Game</ol>
+           <ol class="instructions">2. Watch to see the color that lights up</ol>
+            <ol class="instructions">3. Press the color button that lit up </ol>
+            <ol class="instructions">4. See what button lights up next </ol>
+            <ol class="instructions">5. Press that button and the one that lit up before </ol>
+            <ol class="instructions">6. Continue this pattern until you mess up </ol>
+            <ol class="instructions">7. See what level you can get to!</ol>
+        </p>
+      </div>
 
-    <script src="simon.js"></script>
-    <script src="buttons.js"></script>
-  </body>
+
+      <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+      </script>
+
+      <script src="simon.js"></script>
+      <script src="buttons.js"></script>
+   
+    </body>
+  </div>  
 </html>
